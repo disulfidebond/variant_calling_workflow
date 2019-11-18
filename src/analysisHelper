@@ -1,0 +1,55 @@
+#!/bin/bash
+
+argArray=("$@")
+
+function argsFunction() {
+  argsFunc=("$@")
+  FNAME=$(echo "${argsFunc[1]}")
+  # read argument list file into bash array
+  argsArray=($(<"$FNAME"))
+  CMDSTRING=""
+  for i in "${argsArray[@]}" ; do
+    V=$(echo "$i") ;
+    if [[ "${V::1}" == '#' ]] ; then
+      :
+    else
+      CMDSTRING+="$i "
+    fi
+  done
+  # echo "$CMDSTRING"
+  bash "$CMDSTRING"
+
+}
+
+echo 'Starting...'
+echo ''
+if [ "${argArray[0]}" == '-c' ] ; then
+  echo 'running the following command'
+  CMDSTRING=''
+  argArray=("${argArray[@]:1}")
+  for i in "${argArray[@]}" ; do
+    CMDSTRING+="$i "
+    echo "$i"
+  done
+  # clumsy but it works
+  CMDSTRING=$(echo "$CMDSTRING" | cut -d\  -f1-)
+  # echo "$CMDSTRING"
+  bash $CMDSTRING
+elif [ "${argArray[0]}" == '-l' ] && [ ! -z ${argArray[1]} ] ; then
+  FNAME=$(echo "${argArray[1]}")
+  echo "reading arguments from file $FNAME"
+  argsFunction "${argArray[@]}"
+elif [ "${argArray[0]}" == '-l' ] && [ -z ${argArray[1]} ] ; then
+  echo 'Error, no filename for -l provided'
+  echo 'Please check what you entered and try again'
+  echo ''
+  sleep 1
+else
+  echo 'It looks like you entered an unrecognized input,'
+  echo 'used quotes where you should not,'
+  echo 'or -c or -l were not specified'
+  echo 'Please check the command and try again'
+  echo ''
+  sleep 1
+  exit 1
+fi
