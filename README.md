@@ -4,7 +4,7 @@ Listed here are the steps that were taken with the Varint Calling workflow
 
 ## Preliminaries and setup
 1. [Install Docker](https://docs.docker.com/docker-for-windows/install/)
-2. Create a Docker volume with the BWA and Bowtie2 index files.
+2. [Create a Docker volume with the BWA and Bowtie2 index files](https://github.com/disulfidebond/variant_calling_workflow/blob/master/DataAccess.md).
 3. Pull Docker image, then run the container.
 
 
