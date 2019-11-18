@@ -3,9 +3,9 @@ At a basic level, this workflow functions by starting the Docker container, and 
 
 ![](https://github.com/disulfidebond/variant_calling_workflow/blob/master/images/workflow_basic.png)
 
-The *analysisHelper* script acts as a delegate for handling data locations and parameters for workflows.
+The [analysisHelper](https://github.com/disulfidebond/variant_calling_workflow/blob/master/src/analysisHelper) script acts as a delegate for handling data locations and parameters for workflows.
 
-The usage for the analysisHelper is as follows:
+The usage for the [analysisHelper](https://github.com/disulfidebond/variant_calling_workflow/blob/master/src/analysisHelper) is as follows:
 
         ./analysisHelper.sh [-c || -l]
 
