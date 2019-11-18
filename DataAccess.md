@@ -28,7 +28,7 @@ This approach is strongly recommended. The index and other data will first be co
         docker exec -it CONTAINERNAME /bin/bash
         
 ### Copy to or from the Docker Container
-Another option is to copy the data to or from the Docker Container, then start the analyses:
+Another option is to copy the data to or from the Docker Container:
 
         # copy data to the stopped container
         docker cp *.txt CONTAINERNAME:/home/scientist/
